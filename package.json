@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/calvinmetcalf/process-nextick-args",
   "devDependencies": {
-    "tape": "~4.0.0"
+    "tap": "~0.2.6"
   }
 }
