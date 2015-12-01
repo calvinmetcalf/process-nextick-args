@@ -1,9 +1,9 @@
 'use strict';
 
-if (process.version.indexOf('v0.1') === 0) {
-  module.exports = nextTick;
-} else {
+if (process.version && parseInt(process.version.split('.')[0].slice(1), 10) > 0) {
   module.exports = process.nextTick;
+} else {
+  module.exports = nextTick;
 }
 
 function nextTick(fn) {
