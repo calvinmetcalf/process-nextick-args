@@ -1,5 +1,10 @@
 'use strict';
-module.exports = nextTick;
+
+if (process.version.indexOf('v0.1') === 0) {
+  module.exports = nextTick;
+} else {
+  module.exports = process.nextTick;
+}
 
 function nextTick(fn) {
   var args = new Array(arguments.length - 1);
