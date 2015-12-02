@@ -1,6 +1,6 @@
 {
   "name": "process-nextick-args",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "process.nextTick but always with args",
   "main": "index.js",
   "scripts": {
