@@ -3,6 +3,9 @@
   "version": "1.0.6",
   "description": "process.nextTick but always with args",
   "main": "index.js",
+  "files": [
+    "index.js"
+  ],
   "scripts": {
     "test": "node test.js"
   },
