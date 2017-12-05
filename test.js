@@ -22,3 +22,15 @@ test('correct number of arguments', function (t) {
     t.equals(2, arguments.length, 'correct number');
   }, 1, 2);
 });
+
+test('uses the current value of process.nextTick', function (t) {
+  t.plan(1);
+  var oldNextTick = process.nextTick;
+  var called = false;
+  process.nextTick = function() {
+    called = true
+  };
+  nextTick(function () {});
+  process.nextTick = oldNextTick;
+  t.ok(called);
+});
