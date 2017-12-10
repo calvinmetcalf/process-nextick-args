@@ -3,12 +3,12 @@
 if (!process.version ||
     process.version.indexOf('v0.') === 0 ||
     process.version.indexOf('v1.') === 0 && process.version.indexOf('v1.8.') !== 0) {
-  module.exports = nextTickPolyfill;
+  module.exports = { nextTick: nextTick };
 } else {
-  module.exports = nextTickWrapper;
+  module.exports = process
 }
 
-function nextTickPolyfill(fn, arg1, arg2, arg3) {
+function nextTick(fn, arg1, arg2, arg3) {
   if (typeof fn !== 'function') {
     throw new TypeError('"callback" argument must be a function');
   }
@@ -42,18 +42,3 @@ function nextTickPolyfill(fn, arg1, arg2, arg3) {
   }
 }
 
-function nextTickWrapper(fn, arg1, arg2, arg3) {
-  switch (arguments.length) {
-  case 0:
-  case 1:
-    return process.nextTick(fn);
-  case 2:
-    return process.nextTick(fn, arg1);
-  case 3:
-    return process.nextTick(fn, arg1, arg2);
-  case 4:
-    return process.nextTick(fn, arg1, arg2, arg3);
-  default:
-    return process.nextTick.apply(process, arguments);
-  }
-}
